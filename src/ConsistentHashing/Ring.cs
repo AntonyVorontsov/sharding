@@ -9,8 +9,21 @@ public sealed class Ring : IRing
     private bool _initializationFinished = false;
     private readonly SortedDictionary<int, VirtualNode> _virtualNodesRing = new();
     private int[] _ringKeys = Array.Empty<int>();
+    private readonly int _replicationFactor;
+    private readonly HashSet<ShardName> _usedShards;
 
     public IReadOnlyDictionary<int, VirtualNode> VirtualNodesRing => _virtualNodesRing;
+
+    public Ring(int replicationFactor)
+    {
+        if (replicationFactor < 0)
+        {
+            throw new ArgumentException("Replication factor should be a positive number", nameof(replicationFactor));
+        }
+
+        _replicationFactor = replicationFactor;
+        _usedShards = new HashSet<ShardName>();
+    }
 
     public void AddVirtualNode(int hash, VirtualNode virtualNode)
     {
@@ -25,6 +38,7 @@ public sealed class Ring : IRing
         }
 
         _virtualNodesRing[hash] = virtualNode;
+        _usedShards.Add(virtualNode.ShardName);
     }
 
     public void FinishInitialization()
@@ -37,6 +51,11 @@ public sealed class Ring : IRing
         if (!_virtualNodesRing.Any())
         {
             throw new InvalidOperationException("The ring has not been initialized");
+        }
+
+        if (_replicationFactor > _usedShards.Count - 1)
+        {
+            throw new InvalidOperationException("Replication factor cannot be more than a number of used shards");
         }
 
         _ringKeys = _virtualNodesRing.Keys.ToArray();
@@ -57,6 +76,37 @@ public sealed class Ring : IRing
 
         var index = FindIndexUsingBinarySearch(hash);
         return _virtualNodesRing[_ringKeys[index]].ShardName;
+    }
+
+    public RouteResult RouteWithPreferenceList(int hash)
+    {
+        if (!_initializationFinished)
+        {
+            throw new InvalidOperationException("Initialization of the ring has not been finished yet");
+        }
+
+        var index = FindIndexUsingBinarySearch(hash);
+        var mainShard = _virtualNodesRing[_ringKeys[index]].ShardName;
+        var preferenceList = new HashSet<ShardName>();
+        while (preferenceList.Count < _replicationFactor)
+        {
+            if (index == _ringKeys.Length - 1)
+            {
+                index = 0;
+            }
+            else
+            {
+                index++;
+            }
+
+            var nextShard = _virtualNodesRing[_ringKeys[index]].ShardName;
+            if (nextShard != mainShard)
+            {
+                preferenceList.Add(nextShard);
+            }
+        }
+
+        return new RouteResult(mainShard, preferenceList);
     }
 
     private int FindIndexUsingBinarySearch(int hash)

@@ -10,14 +10,18 @@ public sealed class ConsistentHashingProvider : IConsistentHashingProvider
 
     public IRing Ring => _ring;
 
-    public ConsistentHashingProvider(IEnumerable<Shard> shards) : this(shards, new XxHashingFunction())
+    public ConsistentHashingProvider(IEnumerable<Shard> shards)
+        : this(shards, new XxHashingFunction(), replicationFactor: 0)
     {
     }
 
-    public ConsistentHashingProvider(IEnumerable<Shard> shards, IHashingFunction hashingFunction)
+    public ConsistentHashingProvider(
+        IEnumerable<Shard> shards,
+        IHashingFunction hashingFunction,
+        int replicationFactor = 0)
     {
         _hashingFunction = hashingFunction;
-        _ring = new Ring();
+        _ring = new Ring(replicationFactor);
 
         InitializeRing(shards);
     }
@@ -38,5 +42,11 @@ public sealed class ConsistentHashingProvider : IConsistentHashingProvider
     {
         var hash = _hashingFunction.Calculate(key);
         return _ring.Route(hash);
+    }
+
+    public RouteResult RouteWithPreferenceList(string key)
+    {
+        var hash = _hashingFunction.Calculate(key);
+        return _ring.RouteWithPreferenceList(hash);
     }
 }
