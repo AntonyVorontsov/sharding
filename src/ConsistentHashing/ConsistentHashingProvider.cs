@@ -3,12 +3,16 @@ using System.Linq;
 
 namespace ConsistentHashing;
 
-public sealed class ConsistentHashingProvider
+public sealed class ConsistentHashingProvider : IConsistentHashingProvider
 {
     private readonly IHashingFunction _hashingFunction;
     private readonly Ring _ring;
 
     public IRing Ring => _ring;
+
+    public ConsistentHashingProvider(IEnumerable<Shard> shards) : this(shards, new XxHashingFunction())
+    {
+    }
 
     public ConsistentHashingProvider(IEnumerable<Shard> shards, IHashingFunction hashingFunction)
     {

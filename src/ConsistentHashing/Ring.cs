@@ -55,11 +55,11 @@ public sealed class Ring : IRing
             return _virtualNodesRing[hash].ShardName;
         }
 
-        var index = FindIndexByBinarySearch(hash);
+        var index = FindIndexUsingBinarySearch(hash);
         return _virtualNodesRing[_ringKeys[index]].ShardName;
     }
 
-    private int FindIndexByBinarySearch(int hash)
+    private int FindIndexUsingBinarySearch(int hash)
     {
         var left = 0;
         var right = _ringKeys.Length - 1;
@@ -67,16 +67,15 @@ public sealed class Ring : IRing
 
         while (left <= right)
         {
-            // Если есть стопроцентное попадание.
+            // If we hit the right virtual node.
             if (_ringKeys[middle] == hash)
             {
                 return middle;
             }
 
-            // Если хэш больше, чем найденное значение, продолжаем искать.
             if (_ringKeys[middle] < hash)
             {
-                // Если мы попали в конец, то кольцуем и отдаём первую ноду
+                // If we hit the end of the ring then we return the first virtual node.
                 if (middle == _ringKeys.Length - 1)
                 {
                     return 0;
@@ -85,30 +84,27 @@ public sealed class Ring : IRing
                 left = middle;
                 middle = (right + left + 1) / 2;
             }
-            // Если хэш меньше, то
             else if (_ringKeys[middle] > hash)
             {
-                // В случае, если мы дошли до края, в таком случае хэш попадает в первую ноду
+                // In case the hash lower than the first virtual node, then return the first node.
                 if (middle == 0)
                 {
                     return 0;
                 }
 
-                // Если мы до края не дошли, в таком случае
-                // если прошлое значение равно хешу - стопроцентное попадаение.
+                // Just in case.
                 if (_ringKeys[middle - 1] == hash)
                 {
                     return middle - 1;
                 }
 
-                // Если прошлое значение меньше, а middle значение больше,
-                // то мы тоже попали в нужную ноду
+                // Our sweet spot.
                 if (_ringKeys[middle - 1] < hash)
                 {
                     return middle;
                 }
 
-                // В ином случае продолжаем считать.
+                // Keep searching
                 right = middle;
                 middle = (right + left - 1) / 2;
             }
