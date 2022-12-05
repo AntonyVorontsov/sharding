@@ -1,0 +1,10 @@
+#!/bin/bash
+
+coverage_files=$(dotnet test --collect:"XPlat Code Coverage" ../Sharding.sln | grep -A 1 Attachments: | grep -v Attachments: | grep -v "\-\-")
+
+i=1;
+while read -r coverage_file_path; do
+  reportgenerator -reports:"$coverage_file_path" -targetdir:"coverage_report_$i" -reporttypes:Html
+  open "./coverage_report_$i/index.html"
+  i=$((i+1));
+done <<< "$coverage_files"

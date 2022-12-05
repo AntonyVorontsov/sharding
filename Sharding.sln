@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9E1236F9-8F19-4A9A-9543-578BEB06A395}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7FD3D94D-F061-47AB-A24E-5B9AB05DD0BB}"
+	ProjectSection(SolutionItems) = preProject
+		tests\calculate_coverage = tests\calculate_coverage
+		tests\README.md = tests\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsistentHashing", "src\ConsistentHashing\ConsistentHashing.csproj", "{A01BA2C8-A778-457A-9CE4-D44A7F430038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsistentHashing.Tests", "tests\ConsistentHashing.Tests\ConsistentHashing.Tests.csproj", "{C3D00353-3312-44B9-914F-1EF901376B95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A01BA2C8-A778-457A-9CE4-D44A7F430038} = {9E1236F9-8F19-4A9A-9543-578BEB06A395}
+		{C3D00353-3312-44B9-914F-1EF901376B95} = {7FD3D94D-F061-47AB-A24E-5B9AB05DD0BB}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A01BA2C8-A778-457A-9CE4-D44A7F430038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A01BA2C8-A778-457A-9CE4-D44A7F430038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A01BA2C8-A778-457A-9CE4-D44A7F430038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A01BA2C8-A778-457A-9CE4-D44A7F430038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D00353-3312-44B9-914F-1EF901376B95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D00353-3312-44B9-914F-1EF901376B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D00353-3312-44B9-914F-1EF901376B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D00353-3312-44B9-914F-1EF901376B95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
