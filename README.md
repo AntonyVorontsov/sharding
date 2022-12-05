@@ -1,2 +1,3 @@
-# sharding
-Consistent hashing and alternatives required for database sharding
+# Sharding
+
+Consistent hashing and alternatives required for database sharding.
