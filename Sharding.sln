@@ -12,6 +12,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsistentHashing", "src\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsistentHashing.Tests", "tests\ConsistentHashing.Tests\ConsistentHashing.Tests.csproj", "{C3D00353-3312-44B9-914F-1EF901376B95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "runners", "runners", "{FDCAA102-2E06-4EEE-B862-595370BBC607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsistentHashing.Runner.RingDistributionCalculator", "runners\ConsistentHashing.Runner.RingDistributionCalculator\ConsistentHashing.Runner.RingDistributionCalculator.csproj", "{99F9F669-1D9F-4695-881E-216FA380CE52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsistentHashing.Runner.ValueDistributionCalculator", "runners\ConsistentHashing.Runner.ValueDistributionCalculator\ConsistentHashing.Runner.ValueDistributionCalculator.csproj", "{60778044-51E4-4397-94CB-921B8A1B5339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +26,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A01BA2C8-A778-457A-9CE4-D44A7F430038} = {9E1236F9-8F19-4A9A-9543-578BEB06A395}
 		{C3D00353-3312-44B9-914F-1EF901376B95} = {7FD3D94D-F061-47AB-A24E-5B9AB05DD0BB}
+		{99F9F669-1D9F-4695-881E-216FA380CE52} = {FDCAA102-2E06-4EEE-B862-595370BBC607}
+		{60778044-51E4-4397-94CB-921B8A1B5339} = {FDCAA102-2E06-4EEE-B862-595370BBC607}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A01BA2C8-A778-457A-9CE4-D44A7F430038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +38,13 @@ Global
 		{C3D00353-3312-44B9-914F-1EF901376B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3D00353-3312-44B9-914F-1EF901376B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3D00353-3312-44B9-914F-1EF901376B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F9F669-1D9F-4695-881E-216FA380CE52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F9F669-1D9F-4695-881E-216FA380CE52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F9F669-1D9F-4695-881E-216FA380CE52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F9F669-1D9F-4695-881E-216FA380CE52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60778044-51E4-4397-94CB-921B8A1B5339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60778044-51E4-4397-94CB-921B8A1B5339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60778044-51E4-4397-94CB-921B8A1B5339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60778044-51E4-4397-94CB-921B8A1B5339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
