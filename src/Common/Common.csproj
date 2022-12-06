@@ -6,6 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Common\Common.csproj" />
+        <PackageReference Include="System.Data.HashFunction.xxHash" Version="2.0.0" />
     </ItemGroup>
 </Project>

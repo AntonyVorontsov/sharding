@@ -1,7 +1,8 @@
+using Common;
+
 namespace ConsistentHashing;
 
-public interface IConsistentHashingProvider
+public interface IConsistentHashingProvider : IHashingProvider
 {
-    ShardName Route(string key);
     RouteResult RouteWithPreferenceList(string key);
 }

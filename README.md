@@ -4,7 +4,7 @@ Consistent hashing and its alternatives required for database sharding (implemen
 
 ## Consistent hashing
 
-In order to use consistent hashing - create an instance of `ConsistentHashingProvider` and pass a collection of shards:
+In order to use [consistent hashing](https://en.wikipedia.org/wiki/Consistent_hashing) - create an instance of `ConsistentHashingProvider` and pass a collection of shards:
 
 ```csharp
 var shards = new[]
@@ -55,3 +55,25 @@ public sealed record RouteResult(ShardName MainShard, IReadOnlyCollection<ShardN
 ```
 
 Where `MainShard` is the shard the given key belongs to and the collection `PreferenceList` is the list of shards that can be used for replication (of the given key).
+
+## Jump hashing
+
+To use jump hashing algorithm (described in [this paper](https://arxiv.org/abs/1406.2294)) there is the class called `JumpHashingProvider`. The process of initialization is absolutely the same as in previous examples, you have to pass a list of shards and a hashing function which will handle strings.
+
+```csharp
+var shards = new ShardName[]
+{
+    "shard-1",
+    "shard-2",
+    "shard-3",
+    "shard-4",
+    "shard-5"
+};
+var provider = new JumpHashingProvider(shards, new XxHashingFunction());
+```
+
+And then you can route keys to shards.
+
+```csharp
+ShardName result = provider.Route("your key");
+```

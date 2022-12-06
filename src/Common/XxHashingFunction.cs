@@ -2,7 +2,7 @@ using System;
 using System.Data.HashFunction.xxHash;
 using System.Text;
 
-namespace ConsistentHashing;
+namespace Common;
 
 public sealed class XxHashingFunction : IHashingFunction
 {

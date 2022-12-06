@@ -1,6 +1,6 @@
 using System;
 
-namespace ConsistentHashing;
+namespace Common;
 
 public readonly struct ShardName : IEquatable<ShardName>, IComparable<ShardName>
 {

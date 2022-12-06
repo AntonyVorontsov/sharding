@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common;
-using ConsistentHashing;
 using ConsoleTables;
+using JumpHashing;
 
-var shards = new[]
+var shards = new ShardName[]
 {
-    new Shard("shard-1", numberOfNodes: 1000),
-    new Shard("shard-2", numberOfNodes: 1000),
-    new Shard("shard-3", numberOfNodes: 1000),
-    new Shard("shard-4", numberOfNodes: 1000),
-    new Shard("shard-5", numberOfNodes: 1000)
+    "shard-1",
+    "shard-2",
+    "shard-3",
+    "shard-4",
+    "shard-5"
 };
-var provider = new ConsistentHashingProvider(shards, new XxHashingFunction());
+var provider = new JumpHashingProvider(shards, new XxHashingFunction());
 
-var routingCalculator = shards.ToDictionary(x => x.ShardName, _ => 0);
+var routingCalculator = shards.ToDictionary(x => x, _ => 0);
 
 const int numberOfIdentifiers = 5_000_000;
 foreach (var id in GetIdsRangeNaive(numberOfIdentifiers))

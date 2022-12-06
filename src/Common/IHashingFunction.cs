@@ -1,4 +1,4 @@
-namespace ConsistentHashing;
+namespace Common;
 
 public interface IHashingFunction
 {

@@ -1,3 +1,5 @@
+using Common;
+
 namespace ConsistentHashing;
 
 public sealed record VirtualNode(ShardName ShardName, int NodeNumber)
