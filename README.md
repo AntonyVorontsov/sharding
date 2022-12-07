@@ -78,7 +78,7 @@ And then you can route keys to shards.
 ShardName result = provider.Route("your key");
 ```
 
-## RendezvousHashing hashing
+## Rendezvous hashing
 
 The [rendezvous hashing](https://en.wikipedia.org/wiki/Rendezvous_hashing) technique is also available.
 
