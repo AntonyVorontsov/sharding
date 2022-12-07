@@ -26,6 +26,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpHashing.Runner.ValueDis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpHashing.Tests", "tests\JumpHashing.Tests\JumpHashing.Tests.csproj", "{AD645555-F8F6-4AFA-8021-6CE1C3FA7D50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RendezvousHashing", "src\RendezvousHashing\RendezvousHashing.csproj", "{6CE902C7-E331-4519-BF3E-C3F6ECC216AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RendezvousHashing.Runner.ValueDistributionCalculator", "runners\RendezvousHashing.Runner.ValueDistributionCalculator\RendezvousHashing.Runner.ValueDistributionCalculator.csproj", "{608803C1-64CB-4751-A6C6-750D5ADB37D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RendezvousHashing.Tests", "tests\RendezvousHashing.Tests\RendezvousHashing.Tests.csproj", "{92853E03-3BFA-4064-8BC6-83D3DAC9E8AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +46,9 @@ Global
 		{88BEEE96-ED08-40E9-BDC5-33D942363F7C} = {9E1236F9-8F19-4A9A-9543-578BEB06A395}
 		{40A81F3E-0083-40B5-9201-CC29B2DCCE11} = {FDCAA102-2E06-4EEE-B862-595370BBC607}
 		{AD645555-F8F6-4AFA-8021-6CE1C3FA7D50} = {7FD3D94D-F061-47AB-A24E-5B9AB05DD0BB}
+		{6CE902C7-E331-4519-BF3E-C3F6ECC216AB} = {9E1236F9-8F19-4A9A-9543-578BEB06A395}
+		{608803C1-64CB-4751-A6C6-750D5ADB37D4} = {FDCAA102-2E06-4EEE-B862-595370BBC607}
+		{92853E03-3BFA-4064-8BC6-83D3DAC9E8AA} = {7FD3D94D-F061-47AB-A24E-5B9AB05DD0BB}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A01BA2C8-A778-457A-9CE4-D44A7F430038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -74,5 +83,17 @@ Global
 		{AD645555-F8F6-4AFA-8021-6CE1C3FA7D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD645555-F8F6-4AFA-8021-6CE1C3FA7D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD645555-F8F6-4AFA-8021-6CE1C3FA7D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE902C7-E331-4519-BF3E-C3F6ECC216AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE902C7-E331-4519-BF3E-C3F6ECC216AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE902C7-E331-4519-BF3E-C3F6ECC216AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE902C7-E331-4519-BF3E-C3F6ECC216AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608803C1-64CB-4751-A6C6-750D5ADB37D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608803C1-64CB-4751-A6C6-750D5ADB37D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608803C1-64CB-4751-A6C6-750D5ADB37D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608803C1-64CB-4751-A6C6-750D5ADB37D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92853E03-3BFA-4064-8BC6-83D3DAC9E8AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92853E03-3BFA-4064-8BC6-83D3DAC9E8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92853E03-3BFA-4064-8BC6-83D3DAC9E8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92853E03-3BFA-4064-8BC6-83D3DAC9E8AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

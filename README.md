@@ -77,3 +77,25 @@ And then you can route keys to shards.
 ```csharp
 ShardName result = provider.Route("your key");
 ```
+
+## RendezvousHashing hashing
+
+The [rendezvous hashing](https://en.wikipedia.org/wiki/Rendezvous_hashing) technique is also available.
+
+```csharp
+var shards = new ShardName[]
+{
+    "shard-1",
+    "shard-2",
+    "shard-3",
+    "shard-4",
+    "shard-5"
+};
+var provider = new RendezvousHashingProvider(shards, new XxHashingFunction());
+```
+
+And then
+
+```csharp
+ShardName result = provider.Route("your key");
+```
